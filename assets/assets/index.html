@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Importação do CSS para estilização visual (Tema Windows XP) -->
+    <link rel="stylesheet" href="style.css">
+    <title>Windows XP Simulation</title>
+</head>
+<body contenteditable="false">
+    <!-- O container principal que representa toda a tela do sistema -->
+    <div id="desktop">
+        
+        <!-- Ícone do Desktop: Representa o atalho para abrir o programa -->
+        <div id="calculator-icon" class="desktop-icon" title="Calculadora de Média">
+            <img src="images/Windows XP Icons/Calculator.png" alt="Calculator Icon">
+            <span>Calculadora</span>
+        </div>
+
+        <!-- Janela da Calculadora: Inicialmente escondida (display: none) -->
+        <div id="calculator-window" class="window" style="display: none;">
+            <!-- Barra de Título: Área usada para arrastar a janela -->
+            <div class="window-title-bar">
+                <div class="window-title">
+                    <img src="images/Windows XP Icons/Calculator.png" alt="Icon" class="title-icon">
+                    Calculadora de Média Escolar
+                </div>
+                <!-- Botões de Controle da Janela: Minimizar, Maximizar e Fechar -->
+                <div class="window-controls">
+                    <button class="win-btn minimize" aria-label="Minimizar">_</button>
+                    <button class="win-btn maximize" aria-label="Maximizar">□</button>
+                    <button class="win-btn close" aria-label="Fechar">X</button>
+                </div>
+            </div>
+            
+            <!-- Conteúdo da Janela: Onde reside a lógica da calculadora original -->
+            <div class="window-content">
+                <form id="form">
+                    <div class="form-group">
+                         <label for="name">Nome: </label>
+                         <input type="text" id="name"> 
+                    </div>
+             
+                    <div class="form-group">
+                         <label for="nota1">Qual a sua nota do ciclo 01: </label>
+                         <input type="number" id="nota1" min="0" max="100" required>
+                    </div>
+             
+                    <div class="form-group">
+                         <label for="nota2">Qual a sua nota do ciclo 02: </label>
+                         <input type="number" id="nota2" min="0" max="100" required>
+                    </div>
+             
+                    <div class="form-group">
+                         <label for="nota3">Qual a sua nota do ciclo 03: </label>
+                         <input type="number" id="nota3" min="0" max="100" required>
+                    </div>
+             
+                    <button type="submit" class="calc-btn">calcular média</button>
+                </form>
+             
+                <!-- Área de resultado: Exibida após o cálculo -->
+                <div id="resultado" style="display: none;">
+                    <h2>Resultado</h2>
+                    <p id="mensagem"></p>
+                </div>
+            </div>
+
+            <!-- Manipuladores de Redimensionamento: Pequenas áreas nas bordas para mudar o tamanho -->
+            <div class="resize-handle n"></div>
+            <div class="resize-handle e"></div>
+            <div class="resize-handle s"></div>
+            <div class="resize-handle w"></div>
+            <div class="resize-handle ne"></div>
+            <div class="resize-handle nw"></div>
+            <div class="resize-handle se"></div>
+            <div class="resize-handle sw"></div>
+        </div>
+
+        <!-- Barra de Tarefas (Taskbar): Rodapé do sistema -->
+        <div id="taskbar">
+            <!-- Botão Iniciar: Abre o Menu Iniciar -->
+            <div id="start-button">
+                <img src="images/Windows XP Icons/winlogo.png" alt="Start" class="start-icon">
+                <span>Iniciar</span>
+            </div>
+            <!-- Área de Tarefas Ativas: Onde aparecem os botões dos programas abertos -->
+            <div id="active-tasks">
+                <!-- Botões serão inseridos dinamicamente pelo JavaScript -->
+            </div>
+            <!-- System Tray: Área do relógio e ícones de sistema -->
+            <div id="system-tray">
+                <div id="clock"></div>
+            </div>
+        </div>
+
+        <!-- Menu Iniciar: Painel visual que emula o menu clássico do XP -->
+        <div id="start-menu" class="hidden">
+            <div class="start-menu-header">
+                <img src="images/pfp.jpg" alt="User" class="user-icon">
+                <span>Usuário Windows</span>
+            </div>
+            <div class="start-menu-body">
+                <!-- Coluna Esquerda: Atalhos de programas -->
+                <div class="start-menu-left">
+                    <div class="start-item"><img src="images/Windows XP Icons/Internet Explorer 6.png" alt=""> Internet Explorer</div>
+                    <div class="start-item"><img src="images/Windows XP Icons/Outlook Express.png" alt=""> Outlook Express</div>
+                    <hr>
+                    <div class="start-item">Todos os Programas ▶</div>
+                </div>
+                <!-- Coluna Direita: Atalhos de pastas e sistema -->
+                <div class="start-menu-right">
+                    <div class="start-item-right"><img src="images/Windows XP Icons/My Documents.png" alt="" class="start-menu-icon"> Meus Documentos</div>
+                    <div class="start-item-right"><img src="images/Windows XP Icons/My Pictures.png" alt="" class="start-menu-icon"> Minhas Imagens</div>
+                    <div class="start-item-right"><img src="images/Windows XP Icons/My Music.png" alt="" class="start-menu-icon"> Minha Música</div>
+                    <div class="start-item-right"><img src="images/Windows XP Icons/My Computer.png" alt="" class="start-menu-icon"> Meu Computador</div>
+                    <hr>
+                    <div class="start-item-right"><img src="images/Windows XP Icons/Control Panel.png" alt="" class="start-menu-icon"> Painel de Controle</div>
+                    <div class="start-item-right"><img src="images/Windows XP Icons/Help and Support.png" alt="" class="start-menu-icon"> Ajuda e Suporte</div>
+                    <div class="start-item-right"><img src="images/Windows XP Icons/Document Search.png" alt="" class="start-menu-icon"> Pesquisar</div>
+                    <div class="start-item-right"><img src="images/Windows XP Icons/Run.png" alt="" class="start-menu-icon"> Executar...</div>
+                </div>
+            </div>
+            <!-- Rodapé do Menu: Opções de desligamento -->
+            <div class="start-menu-footer">
+                <button class="footer-btn logout"><img src="images/Windows XP Icons/Logout.png" alt="" class="footer-icon"> Fazer Logoff</button>
+                <button class="footer-btn shutdown"><img src="images/Windows XP Icons/Power.png" alt="" class="footer-icon"> Desligar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Importação do Motor JavaScript do Projeto -->
+    <script src="controller.js"></script>
+</body>
+</html>
