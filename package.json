@@ -6,11 +6,12 @@
   "scripts": {
     "start": "serve public",
     "prebuild": "shx rm -rf public && shx mkdir public",
-    "build": "npm run build:html && npm run build:css && npm run build:js && npm run build:images",
+    "build": "npm run build:html && npm run build:css && npm run build:js && npm run build:images && npm run build:favicon",
     "build:html": "html-minifier-terser --collapse-whitespace --remove-comments --minify-js true --minify-css true -o public/index.html assets/assets/index.html",
     "build:css": "cleancss -o public/style.css assets/assets/style.css",
     "build:js": "terser assets/assets/controller.js -c -m -o public/controller.js",
-    "build:images": "copyfiles -u 2 \"assets/assets/images/**/*\" public"
+    "build:images": "copyfiles -u 2 \"assets/assets/images/**/*\" public",
+    "build:favicon": "shx cp assets/assets/favicon.ico public/favicon.ico"
   },
   "keywords": [
     "windows-xp",

@@ -251,4 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setInterval(updateClock, 1000);
     updateClock();
+
+    // Abrir a calculadora automaticamente ao carregar o site
+    openCalculator();
 });
