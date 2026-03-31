@@ -1,0 +1,9 @@
+.git
+node_modules
+.cache
+README.md
+LICENSE
+package.json
+package-lock.json
+vercel.json
+.vercelignore

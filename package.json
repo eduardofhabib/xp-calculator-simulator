@@ -1,0 +1,32 @@
+{
+  "name": "xp-calculator-simulator",
+  "version": "1.0.0",
+  "description": "Windows XP Calculator Simulator",
+  "main": "assets/assets/index.html",
+  "scripts": {
+    "start": "serve public",
+    "prebuild": "shx rm -rf public && shx mkdir public",
+    "build": "npm run build:html && npm run build:css && npm run build:js && npm run build:images",
+    "build:html": "html-minifier-terser --collapse-whitespace --remove-comments --minify-js true --minify-css true -o public/index.html assets/assets/index.html",
+    "build:css": "cleancss -o public/style.css assets/assets/style.css",
+    "build:js": "terser assets/assets/controller.js -c -m -o public/controller.js",
+    "build:images": "copyfiles -u 2 \"assets/assets/images/**/*\" public"
+  },
+  "keywords": [
+    "windows-xp",
+    "calculator",
+    "simulator"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "serve": "^14.2.4"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "copyfiles": "^2.4.1",
+    "html-minifier-terser": "^7.2.0",
+    "shx": "^0.4.0",
+    "terser": "^5.46.1"
+  }
+}
