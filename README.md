@@ -35,7 +35,7 @@ A aplicação simula um ambiente desktop com barra de tarefas, janelas interativ
 
 https://xp-calculator-simulator.vercel.app
 
-![Demo](images/demo.gif)
+![Demo](./images/demo.gif)
 
 ---
 
